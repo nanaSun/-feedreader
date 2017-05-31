@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/udacity/frontend-nanodegree-feedreader.git"
+    "url": "https://github.com/nanaSun/-feedreader.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/udacity/frontend-nanodegree-feedreader/issues"
-  },
-  "homepage": "https://github.com/udacity/frontend-nanodegree-feedreader#readme"
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  }
 }
