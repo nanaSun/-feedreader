@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-		it('\'s URL is not empty', function() {
+		it('URL is not empty', function() {
             expect(allFeeds.some(function(i){
             	return typeof i.url==="undefined"||i.url=="";
             })).not.toBe(true);
@@ -41,7 +41,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-    	it('\'s URL is not empty', function() {
+    	it('name is not empty', function() {
             expect(allFeeds.some(function(i){
             	return typeof i.name==="undefined"||i.name=="";
             })).not.toBe(true);
@@ -56,7 +56,9 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
+        it('is hidden by default', function() {
+            expect($("body").hasClass("menu-hidden")).toBe(true);
+        });
 		/* TODO: Write a test that ensures the menu changes
 		 * visibility when the menu icon is clicked. This test
 		 * should have two expectations: does the menu display when
