@@ -17,3 +17,4 @@ gulp.task('check', function() {
 });
 
 gulp.task('default', ["connect"]);
+gulp.task('serve', ["connect"]);
