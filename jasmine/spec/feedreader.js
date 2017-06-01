@@ -25,8 +25,6 @@ $(function() {
         });
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
         /* get the inicial value of whether body has class .menu-hidden 
          * check whether body has class .menu-hidden 
@@ -36,21 +34,17 @@ $(function() {
         it('is hidden by default', function() {
             expect(initstate).toBe(true);
         });
-		/* After trigger the bottom 
-		 * to check whether menu is show.
+		/* click twice 
 		 */
-        afterEach(function(done) {
+        it("click and the menu show and click again and then menu hidden.", function() {
+        	$('.menu-icon-link').trigger("click");
+        	expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
+            initstate=$("body").hasClass("menu-hidden");
             $('.menu-icon-link').trigger("click");
-            done();
-        });
-        it("click and toggle the menu.", function(done) {
             expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
-            done();
         });
-        
-    	 
     });
-    /* TODO: Write a new test suite named "Initial Entries" */
+
     describe('Initial Entries', function() {
         /* get the value of feed
          * and then check where entry in the dom is greater than 0
@@ -65,27 +59,24 @@ $(function() {
             done();
         });
     });
-    /* TODO: Write a new test suite named "New Feed Selection" */
+
     describe('New Feed Selection', function() {
         /* get the value of feed one after another
          * compare two feed to check whether the content actually changes.
          */
         var b="",a="";
         beforeEach(function(done) {
-            loadFeed(0,function(res){
-                b=JSON.stringify(res);
-                done();
+            loadFeed(0,function(){
+                b=$(".feed").html();
+                loadFeed(1,function(){
+	                a=$(".feed").html();
+	                done();
+	            });
             });
         });
         it(" when a new feed is loaded by the loadFeed function that the content actually changes.", function(done) {
             expect(b).not.toBe(a);
             done();
-        });
-        afterEach(function(done) {
-            loadFeed(1,function(res){
-                a=JSON.stringify(res);
-                done();
-            });
         });
     });
 }());
