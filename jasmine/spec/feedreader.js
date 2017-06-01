@@ -12,7 +12,7 @@ $(function() {
          */
 		it('URL is not empty', function() {
             expect(allFeeds.some(function(i){
-            	return typeof i.url==="undefined"||i.url=="";
+            	return typeof i.url==="undefined"||i.url==="";
             })).not.toBe(true);
         });
         /* check whether name is undefined in the object 
@@ -20,7 +20,7 @@ $(function() {
          */
     	it('name is not empty', function() {
             expect(allFeeds.some(function(i){
-            	return typeof i.name==="undefined"||i.name=="";
+            	return typeof i.name==="undefined"||i.name==="";
             })).not.toBe(true);
         });
     });
@@ -39,15 +39,15 @@ $(function() {
 		/* After trigger the bottom 
 		 * to check whether menu is show.
 		 */
-        
-        it("click and toggle the menu.", function(done) {
-            expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
-            done();
-        });
         afterEach(function(done) {
             $('.menu-icon-link').trigger("click");
             done();
         });
+        it("click and toggle the menu.", function(done) {
+            expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
+            done();
+        });
+        
     	 
     });
     /* TODO: Write a new test suite named "Initial Entries" */
