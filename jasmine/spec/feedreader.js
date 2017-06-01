@@ -11,17 +11,19 @@ $(function() {
          * and url is not empty
          */
 		it('URL is not empty', function() {
-            expect(allFeeds.some(function(i){
-            	return typeof i.url==="undefined"||i.url==="";
-            })).not.toBe(true);
+            allFeeds.forEach(function(i){
+            	 expect(i.url).toBeDefined(true);
+                 expect(i.url).not.toBe('')
+            })
         });
         /* check whether name is undefined in the object 
          * and name is not empty
          */
     	it('name is not empty', function() {
-            expect(allFeeds.some(function(i){
-            	return typeof i.name==="undefined"||i.name==="";
-            })).not.toBe(true);
+            allFeeds.forEach(function(i){
+                 expect(i.name).toBeDefined(true);
+                 expect(i.name).not.toBe('')
+            })
         });
     });
 
@@ -30,18 +32,16 @@ $(function() {
          * check whether body has class .menu-hidden 
          * to ensure the menu is hidden
          */
-        var initstate=$("body").hasClass("menu-hidden");
         it('is hidden by default', function() {
-            expect(initstate).toBe(true);
+            expect($("body").hasClass("menu-hidden")).toBe(true);
         });
 		/* click twice 
 		 */
         it("click and the menu show and click again and then menu hidden.", function() {
         	$('.menu-icon-link').trigger("click");
-        	expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
-            initstate=$("body").hasClass("menu-hidden");
+        	expect($("body").hasClass("menu-hidden")).toBe(false);
             $('.menu-icon-link').trigger("click");
-            expect($("body").hasClass("menu-hidden")).not.toBe(initstate);
+            expect($("body").hasClass("menu-hidden")).toBe(true);
         });
     });
 
@@ -50,13 +50,10 @@ $(function() {
          * and then check where entry in the dom is greater than 0
          */
         beforeEach(function(done) {
-            loadFeed(0,function(){
-                done();
-            });
+            loadFeed(0,done);
         });
-        it("at least a single .entry element within the .feed container", function(done) {
+        it("at least a single .entry element within the .feed container", function() {
             expect($(".feed .entry").length).toBeGreaterThan(0);
-            done();
         });
     });
 
@@ -74,9 +71,8 @@ $(function() {
 	            });
             });
         });
-        it(" when a new feed is loaded by the loadFeed function that the content actually changes.", function(done) {
+        it(" when a new feed is loaded by the loadFeed function that the content actually changes.", function() {
             expect(b).not.toBe(a);
-            done();
         });
     });
 }());
