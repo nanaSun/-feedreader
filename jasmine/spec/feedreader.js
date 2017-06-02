@@ -13,8 +13,8 @@ $(function() {
 		it('URL is not empty', function() {
             allFeeds.forEach(function(i){
             	 expect(i.url).toBeDefined(true);
-                 expect(i.url).not.toBe('')
-            })
+                 expect(i.url).not.toBe('');
+            });
         });
         /* check whether name is undefined in the object 
          * and name is not empty
@@ -22,8 +22,8 @@ $(function() {
     	it('name is not empty', function() {
             allFeeds.forEach(function(i){
                  expect(i.name).toBeDefined(true);
-                 expect(i.name).not.toBe('')
-            })
+                 expect(i.name).not.toBe('');
+            });
         });
     });
 
